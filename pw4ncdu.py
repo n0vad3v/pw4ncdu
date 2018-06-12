@@ -1,6 +1,8 @@
 from optparse import OptionParser
-from subprocess import call
+import subprocess
 import sys
+import os
+import json
 
 version = "0.0.1"
 
@@ -11,9 +13,14 @@ def build_statement_and_exec(options):
     command_assets = []
     command_assets.append("ncdu -xo- ")
     command_assets.append(path)
+    #print(command_assets)
     command_string = ' '.join(command_assets)
-    #results = call(command_string)
+    results = subprocess.getoutput(command_string)
     return results
+
+def parse_ncdu_results(results):
+    j = json.loads(results)
+    print("The PATH you are scanning for is %s" % j[3][0]['name'])
 
 def main():
     parser = OptionParser()
@@ -22,10 +29,12 @@ def main():
     parser = OptionParser(usage, version='%prog ' + version)
     parser.add_option("-p", "--path", dest="path",
                       help="Scan the specified PATH")
+    parser.add_option("-e", "--exclude", dest="exclude",
+                      help="Exclude specific file extensions")
 
     (options, args) = parser.parse_args()
-    #print(build_statement(options))
-    print(build_statement_and_exec(options))
+    json_results = build_statement_and_exec(options)
+    parse_ncdu_results(json_results)
 
 if __name__ == "__main__":
     main()

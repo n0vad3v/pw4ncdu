@@ -2,6 +2,18 @@
 
 > ncdu 1.13, Python 3.6
 
+# Goal
+
+We need to help SAs to find large files in the given path.
+
+# Considerations
+
+Since NCDU can do a great job for us, we still need a wrapper to make it more hackable.
+
+There might be some large files we want to exclude when scanning such as log files(with .log extension), so we need an option to exclude the specific file extensions.
+
+# Test Case for coding.
+
 We don't need the interactive UI for NCDU since we need further process by Python
 example output with command`ncdu -xo- /home/Nova/Downloads/dosbox`
 ```
