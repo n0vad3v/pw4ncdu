@@ -21,6 +21,16 @@ def build_statement_and_exec(options):
 def parse_ncdu_results(results):
     j = json.loads(results)
     print("The PATH you are scanning for is %s" % j[3][0]['name'])
+    rescan(j)
+
+def rescan(json):
+    file_array = [] # The array for storing file data
+    if type(json) == dict: # File information
+        file_array.append(json)
+    elif type(json) == list:
+        for items in json:
+            rescan(item)
+    return file_array
 
 def main():
     parser = OptionParser()
