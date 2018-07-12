@@ -18,19 +18,23 @@ def build_statement_and_exec(options):
     results = subprocess.getoutput(command_string)
     return results
 
-def parse_ncdu_results(results):
-    j = json.loads(results)
-    print("The PATH you are scanning for is %s" % j[3][0]['name'])
-    rescan(j)
-
+file_array = [] # The array for storing file data
 def rescan(json):
-    file_array = [] # The array for storing file data
     if type(json) == dict: # File information
         file_array.append(json)
     elif type(json) == list:
         for items in json:
-            rescan(item)
+            rescan(items)
     return file_array
+
+def parse_ncdu_results(results):
+    j = json.loads(results)
+    print("The PATH you are scanning for is %s" % j[3][0]['name'])
+    sort_dict = {} # For sort the files
+    for item in rescan(j):
+        if "name" in item:
+            sort_dict["name"] = item['name']
+            #print(item['name'],item['asize'])
 
 def main():
     parser = OptionParser()
