@@ -34,7 +34,7 @@ def parse_ncdu_results(results):
     for item in rescan(j):
         if "name" in item:
             sort_dict["name"] = item['name']
-            #print(item['name'],item['asize'])
+            print(item['name'],item['asize'])
 
 def main():
     parser = OptionParser()

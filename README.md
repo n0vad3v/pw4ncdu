@@ -12,6 +12,10 @@ Since NCDU can do a great job for us, we still need a wrapper to make it more ha
 
 There might be some large files we want to exclude when scanning such as log files(with .log extension), so we need an option to exclude the specific file extensions.
 
+# Usage
+
+`python3 pw4ncdu.py --path /path/for/scanning/`
+
 # Test Case for coding.
 
 We don't need the interactive UI for NCDU since we need further process by Python
