@@ -8,9 +8,11 @@ We need to help SAs to find large files in the given path.
 
 # Considerations
 
-Since NCDU can do a great job for us, we still need a wrapper to make it more hackable.
+* Since NCDU can do a great job for us, we still need a wrapper to make it more hackable.
 
-There might be some large files we want to exclude when scanning such as log files(with .log extension), so we need an option to exclude the specific file extensions.
+* There might be some large files we want to exclude when scanning such as log files(with .log extension), so we need an option to exclude the specific file  pattern.
+
+* For those who want to only show files bigger than known size, `pw4ncdu` provides a option to handle that.
 
 # Usage
 
