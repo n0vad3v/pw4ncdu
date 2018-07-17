@@ -14,7 +14,9 @@ There might be some large files we want to exclude when scanning such as log fil
 
 # Usage
 
-`python3 pw4ncdu.py --path /path/for/scanning/`
+use `python3 pw4ncdu.py -h` for help.
+
+`python3 pw4ncdu.py -p /path/for/scanning/ -e excluded_pattern -s only_show_files_with_size_bigger_than_mib`
 
 # Test Case for coding.
 
